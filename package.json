@@ -6,10 +6,12 @@
     "start": "http-server -p 8080 src/",
     "test": "docker-compose run --rm test jest --runInBand",
     "test:update": "docker-compose run --rm test jest --runInBand --updateSnapshot",
-    "test:ci": "jest --runInBand"
+    "test:ci": "TEST_ENV=ci jest --runInBand"
   },
   "husky": {
-    "pre-push": "npm test"
+    "hooks": {
+      "pre-push": "npm test"
+    }
   },
   "author": "brendan.mckeown@thinkcompany.com",
   "license": "ISC",

@@ -19,6 +19,6 @@ module.exports = {
     // (in development, we assume the dev server is already running)
     command: 'npm start',
     launchTimeout: 10000,
-    port: 3333
+    port: 8080
   } : null,
 };
