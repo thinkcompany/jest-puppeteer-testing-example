@@ -1,10 +1,5 @@
-const CI_MODE = process.env.TEST_ENV === 'ci';
-
-// we access localhost from inside a Docker container through host.docker.internal
-const baseUrl = CI_MODE ? 'http://localhost:8080' : 'http://host.docker.internal:8080';
-
 global.config = {
-  baseUrl
+  baseUrl: 'http://localhost:8080'
 };
 
 // extend `expect` with `toMatchImageSnapshot` and set global configuration

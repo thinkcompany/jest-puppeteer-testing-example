@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "E2E and visual regression testing example configuration using Jest and Puppeteer",
   "scripts": {
+    "docker:build": "docker-compose build",
     "start": "http-server -p 8080 src/",
     "test": "docker-compose run --rm test jest --runInBand",
     "test:update": "docker-compose run --rm test jest --runInBand --updateSnapshot",
-    "test:ci": "TEST_ENV=ci jest --runInBand"
+    "test:ci": "jest --runInBand"
   },
   "husky": {
     "hooks": {
