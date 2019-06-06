@@ -1,0 +1,14 @@
+image: thinkcompany/docker-node-chrome:latest
+
+pipelines:
+  pull-requests:
+    master:
+      - step:
+        caches:
+          - node
+        script:
+          - npm install --quiet
+          - export TEST_ENV=ci
+          - npm run test:ci
+        artifacts:
+          - src/**/__image_snapshots__/__diff_output__/*.png

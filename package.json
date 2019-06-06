@@ -1,0 +1,28 @@
+{
+  "name": "jest-puppeteer-testing-example",
+  "version": "1.0.0",
+  "description": "E2E and visual regression testing example configuration using Jest and Puppeteer",
+  "scripts": {
+    "start": "http-server -p 8080 src/",
+    "test": "docker-compose run --rm test jest --runInBand",
+    "test:update": "docker-compose run --rm test jest --runInBand --updateSnapshot",
+    "test:ci": "jest --runInBand"
+  },
+  "husky": {
+    "pre-push": "npm test"
+  },
+  "author": "brendan.mckeown@thinkcompany.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "http-server": "^0.11.1",
+    "husky": "^2.4.0",
+    "jest": "^24.8.0",
+    "jest-image-snapshot": "^2.8.2",
+    "jest-junit": "^6.4.0",
+    "jest-puppeteer": "^4.2.0",
+    "puppeteer": "^1.17.0"
+  }
+}
