@@ -10,5 +10,5 @@ pipelines:
           caches:
             - node
           artifacts:
-            - src/**/__image_snapshots__/__diff_output__/*.png
+            - src/__image_snapshots__/__diff_output__/*.png
             - .npm/**/*.log

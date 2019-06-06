@@ -1,6 +1,6 @@
 # Visual regression testing with Jest, Puppeteer and jest-image-snapshot
 
-Visual regression tests help us prevent unintentional changes to the visual rendering of components. These tests are run in headless Chrome with [Puppeteer](https://pptr.dev/) to control the browser. Tests are written using [Jest](https://jestjs.io/docs/en/getting-started), [jest-puppeteer](https://github.com/smooth-code/jest-puppeteer) is used to facilitate writing tests, and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) is used for comparing images.
+Visual regression tests help us prevent unintentional changes to the visual rendering of components. These tests are run in headless Chrome using [Puppeteer](https://pptr.dev/). Tests are written using [Jest](https://jestjs.io/docs/en/getting-started), [jest-puppeteer](https://github.com/smooth-code/jest-puppeteer) is used to facilitate writing tests, and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) is used for comparing images.
 
 These tests run automatically in two scenarios. First, on a developer's machine (inside a Docker container) before a `git push`, and again in Bitbucket Pipelines CI (which uses the same Docker container) when a pull request is created (see `bitbucket-pipelines.yml`). These tests should not be run on a developer's native OS because minor rendering differences between operating systems will cause test failures.
 
@@ -15,7 +15,7 @@ Install NodeJS dependencies by running `npm install`.
 
 ## Running the tests
 
-To run the tests manually, you must first have the development server running (`npm start`). Once it is available, in a separate process, run `npm test`. This will spin up a Docker container on your machine and run the tests in headless Chrome.
+To run the tests manually, run `npm test`. This will spin up a Docker container on your machine, start the development server _inside_ the container, and then run the tests.
 
 For any given test, if no reference screenshot exists, one will be taken and saved alongside the test file in the `__image_snapshots__` directory. Afterwards, be sure to commit these new reference files to version control so that they may be used for future tests.
 
