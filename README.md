@@ -1,8 +1,16 @@
 # Visual regression testing with Jest, Puppeteer and jest-image-snapshot
 
-Visual regression tests help us prevent unintentional changes to the visual rendering of components. These tests are run in headless Chrome using [Puppeteer](https://pptr.dev/). Tests are written using [Jest](https://jestjs.io/docs/en/getting-started), [jest-puppeteer](https://github.com/smooth-code/jest-puppeteer) is used to facilitate writing tests, and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) is used for comparing images.
+## What is visual regression testing?
 
-These tests run automatically in two scenarios. First, on a developer's machine (inside a Docker container) before a `git push`, and again in Bitbucket Pipelines CI (which uses the same Docker container) when a pull request is created (see `bitbucket-pipelines.yml`). These tests should not be run on a developer's native OS because minor rendering differences between operating systems will cause test failures.
+Visual regression tests help catch unintentional changes to the visual rendering of a web page or component. As engineers and testers, we already do this manually, but it takes a lot of time, and as humans, are prone to overlooking breaking changes. Automating this process gives us back time to focus on more important things, and gives us added confidence when updating code.
+
+## How it works
+
+These tests are run in headless Chrome using [Puppeteer](https://pptr.dev/). They are written using the [Jest](https://jestjs.io/docs/en/getting-started) testing framework. [jest-puppeteer](https://github.com/smooth-code/jest-puppeteer) is added to facilitate writing and running the tests, and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) does the actual image comparison and lets us know when something has changed.
+
+These tests run automatically in two scenarios. First, on a developer's machine (inside a Docker container) before a `git push` (using [Husky](https://github.com/typicode/husky)), and again in Bitbucket Pipelines CI (which uses the same Docker container) when a pull request is created (see `bitbucket-pipelines.yml`). In most cases, breaking changes will never make it up to the remote repository, but running the tests again in CI ensures we catch _everything_.
+
+We run the tests in a Docker container to ensure there are no differences between local and CI environments. These tests should not be run on a developer's native OS because minor rendering differences between operating systems in the browser **will** cause test failures.
 
 ## System requirements
 
