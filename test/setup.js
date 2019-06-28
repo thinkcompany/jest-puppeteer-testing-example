@@ -1,5 +1,15 @@
 global.config = {
-  baseUrl: 'http://localhost:8080'
+  baseUrl: 'http://localhost:8080',
+  viewports: [
+    {
+      width: 375,
+      height: 667,
+    },
+    {
+      width: 1024,
+      height: 768,
+    },
+  ]
 };
 
 // extend `expect` with `toMatchImageSnapshot` and set global configuration
