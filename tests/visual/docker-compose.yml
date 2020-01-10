@@ -1,0 +1,11 @@
+version: '3'
+services:
+  test:
+    container_name: visual-test-example
+    image: thinkcompany/docker-node-chrome:latest
+    environment:
+      - CI_ENV
+      - WATCH
+      - JEST_PUPPETEER_CONFIG=/app/tests/visual/jest-puppeteer.config.js
+    volumes:
+      - "../../:/app"

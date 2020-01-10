@@ -2,11 +2,11 @@ image: thinkcompany/docker-node-chrome:latest
 
 pipelines:
   pull-requests:
-    feature/*:
+    '**':
       - step:
           script:
-            - npm install --quiet
-            - npm run test:ci
+            - npm ci
+            - npm run vistest:ci
           caches:
             - node
           artifacts:
