@@ -1,15 +1,25 @@
 describe('primary button', () => {
-  const url = `${global.config.baseUrl}`;
-  let bodyElement;
+  const { loadPage, matchBodyScreenshot } = global.utils;
+
   let buttonElement;
 
   beforeEach(async () => {
-    await page.goto(url);
-    bodyElement = await page.$('body');
+    await loadPage('');
     buttonElement = await page.$('.btn');
   });
 
-  global.config.viewports.forEach((viewport) => {
+  const viewports = [
+    {
+      width: 375,
+      height: 667,
+    },
+    {
+      width: 1024,
+      height: 768,
+    },
+  ];
+
+  viewports.forEach((viewport) => {
 
     describe(`${viewport.width}x${viewport.height}`, () => {
 
@@ -18,20 +28,17 @@ describe('primary button', () => {
       });
 
       test('should render correctly', async () => {
-        const screenshot = await bodyElement.screenshot();
-        expect(screenshot).toMatchImageSnapshot();
+        await matchBodyScreenshot();
       });
 
       test('should render correctly on focus', async () => {
         await buttonElement.focus();
-        const screenshot = await bodyElement.screenshot();
-        expect(screenshot).toMatchImageSnapshot();
+        await matchBodyScreenshot();
       });
 
       test('should render correctly on hover', async () => {
         await buttonElement.hover();
-        const screenshot = await bodyElement.screenshot();
-        expect(screenshot).toMatchImageSnapshot();
+        await matchBodyScreenshot();
       });
 
     });

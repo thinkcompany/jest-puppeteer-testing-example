@@ -8,11 +8,24 @@ module.exports = {
   reporters: [
     'default',
     ['jest-junit', {
-      outputDirectory: './test-reports',
+      outputDirectory: './reports',
       outputName: './jest-junit.xml'
     }]
-  ],
+	],
 
-  setupFilesAfterEnv: ['./test/setup.js'],
+	roots: [
+		'../../src'
+	],
+
+	setupFilesAfterEnv: ['./test-setup.js'],
+
+	testMatch: [
+		'**/*.vistest.js'
+	],
+
+	testPathIgnorePatterns: [
+		'/node_modules/',
+		'/dist/'
+	]
 
 };

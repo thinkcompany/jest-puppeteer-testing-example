@@ -3,5 +3,5 @@ npm*
 .vscode
 .DS_Store
 
-test-reports
 __diff_output__
+reports
